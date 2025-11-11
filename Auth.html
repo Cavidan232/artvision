@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtVision - Giriş</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff4d94;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --text: #333;
+            --text-light: #777;
+            --success: #28a745;
+            --error: #dc3545;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .form-container {
+            padding: 2.5rem 2rem;
+            max-width:450px;
+            min-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            z-index: 1;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .form-footer a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: var(--text-light);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider span {
+            padding: 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        .social-login {
+            margin-top: 1.5rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-btn.google {
+            color: #db4437;
+        }
+
+        .social-btn.facebook {
+            color: #4267B2;
+        }
+
+        .alert {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .alert-error {
+            background: #ffe6e6;
+            color: var(--error);
+            border: 1px solid #ffb8b8;
+        }
+
+        .alert-success {
+            background: #e6ffe6;
+            color: var(--success);
+            border: 1px solid #b8ffb8;
+        }
+
+        .loading {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .btn.loading .btn-text {
+            opacity: 0;
+        }
+
+        .btn.loading .loading {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                margin: 0.5rem;
+            }
+            
+            .header {
+                padding: 2rem 1.5rem;
+            }
+            
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .social-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page">
+        <div class="container fade-in">
+            <div class="header">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-palette"></i>
+                        <span>ArtVision</span>
+                    </div>
+                    <h1>Xoş gəlmisiniz</h1>
+                    <p>Hesabınıza daxil olun</p>
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="alert alert-error" id="loginError"></div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">E-poçt</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" class="form-control" placeholder="E-poçtunuzu daxil edin" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Şifrə</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" class="form-control" placeholder="Şifrənizi daxil edin" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="loginBtn">
+                        <span class="btn-text">Daxil Ol</span>
+                        <div class="loading"></div>
+                    </button>
+                </form>
+                
+                <div class="divider">
+                    <span>və ya</span>
+                </div>
+                
+                <div class="social-login">
+                    <div class="social-buttons">
+                        <button class="social-btn google" onclick="socialLogin('google')">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button class="social-btn facebook" onclick="socialLogin('facebook')">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-footer">
+                    Hesabınız yoxdur? <a href="#" onclick="showPage('registerPage')">Qeydiyyatdan keçin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Page -->
+    <div id="registerPage" class="page" style="display: none;">
+        <div class="container fade-in">
+            <div class="header">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-palette"></i>
+                        <span>ArtVision</span>
+                    </div>
+                    <h1>Yeni Hesab</h1>
+                    <p>Qeydiyyatdan keçin</p>
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="alert alert-error" id="registerError"></div>
+                <div class="alert alert-success" id="registerSuccess" style="display: none;"></div>
+                
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">Ad Soyad</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="registerName" class="form-control" placeholder="Adınızı və soyadınızı daxil edin" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerEmail">E-poçt</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="registerEmail" class="form-control" placeholder="E-poçtunuzu daxil edin" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword">Şifrə</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="registerPassword" class="form-control" placeholder="Şifrə yaradın (minimum 6 simvol)" required minlength="6">
+                            <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">Şifrəni təsdiqlə</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="registerConfirmPassword" class="form-control" placeholder="Şifrəni təkrar daxil edin" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('registerConfirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="registerBtn">
+                        <span class="btn-text">Qeydiyyatdan Keç</span>
+                        <div class="loading"></div>
+                    </button>
+                </form>
+                
+                <div class="form-footer">
+                    Artıq hesabınız var? <a href="#" onclick="showPage('loginPage')">Daxil olun</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auth sistemində istifadəçi məlumatları
+        let users = JSON.parse(localStorage.getItem('artvision_users')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('artvision_current_user')) || null;
+
+        // Səhifələri idarə etmək üçün funksiya
+        function showPage(pageId) {
+            // Bütün səhifələri gizlə
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Tələb olunan səhifəni göstər
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Formları təmizlə
+            clearForms();
+        }
+
+        // Formları təmizlə
+        function clearForms() {
+            document.getElementById('loginForm').reset();
+            document.getElementById('registerForm').reset();
+            hideAlert('loginError');
+            hideAlert('registerError');
+            hideAlert('registerSuccess');
+        }
+
+        // Şifrə göstərmə/gizlətmə
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const toggle = input.parentNode.querySelector('.password-toggle i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.className = 'fas fa-eye-slash';
+            } else {
+                input.type = 'password';
+                toggle.className = 'fas fa-eye';
+            }
+        }
+
+        // Alert göstər
+        function showAlert(elementId, message, type = 'error') {
+            const alert = document.getElementById(elementId);
+            alert.textContent = message;
+            alert.className = `alert alert-${type}`;
+            alert.style.display = 'block';
+        }
+
+        // Alert gizlə
+        function hideAlert(elementId) {
+            document.getElementById(elementId).style.display = 'none';
+        }
+
+        // Loading göstər
+        function showLoading(buttonId) {
+            document.getElementById(buttonId).classList.add('loading');
+        }
+
+        // Loading gizlə
+        function hideLoading(buttonId) {
+            document.getElementById(buttonId).classList.remove('loading');
+        }
+
+        // Email validasiyası
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Şifrə validasiyası
+        function isValidPassword(password) {
+            return password.length >= 6;
+        }
+
+        // Login funksiyası
+        function login(email, password) {
+            const user = users.find(u => u.email === email && u.password === password);
+            return user;
+        }
+
+        // Qeydiyyat funksiyası
+        function register(name, email, password) {
+            // Email-in artıq istifadə olunub-olunmadığını yoxla
+            if (users.find(u => u.email === email)) {
+                return { success: false, message: 'Bu email artıq istifadə olunub' };
+            }
+
+            const newUser = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                password: password,
+                createdAt: new Date().toISOString(),
+                favorites: [],
+                cart: []
+            };
+
+            users.push(newUser);
+            localStorage.setItem('artvision_users', JSON.stringify(users));
+            
+            return { success: true, user: newUser };
+        }
+
+        // Social login (nümunə)
+        function socialLogin(provider) {
+            showAlert('loginError', `${provider} ilə giriş hazırlanır...`, 'success');
+            // Real tətbiqdə burada social auth API çağırışları olardı
+        }
+
+        // Form hadisələri
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            // Validasiya
+            if (!email || !password) {
+                showAlert('loginError', 'Zəhmət olmasa bütün xanaları doldurun');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showAlert('loginError', 'Zəhmət olmasa düzgün email daxil edin');
+                return;
+            }
+            
+            showLoading('loginBtn');
+            
+            // 1.5 saniyə gözlə (real tətbiqdə API çağırışı üçün)
+            setTimeout(() => {
+                const user = login(email, password);
+                
+                if (user) {
+                    // Uğurlu giriş
+                    currentUser = user;
+                    localStorage.setItem('artvision_current_user', JSON.stringify(user));
+                    showAlert('loginError', 'Uğurla daxil oldunuz!', 'success');
+                    
+                    // 2 saniyə sonra favoritlər səhifəsinə yönləndir
+                    setTimeout(() => {
+                        window.location.href = 'favorites.html';
+                    }, 2000);
+                } else {
+                    // Uğursuz giriş
+                    showAlert('loginError', 'Email və ya şifrə yanlışdır');
+                }
+                
+                hideLoading('loginBtn');
+            }, 1500);
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            // Validasiya
+            if (!name || !email || !password || !confirmPassword) {
+                showAlert('registerError', 'Zəhmət olmasa bütün xanaları doldurun');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showAlert('registerError', 'Zəhmət olmasa düzgün email daxil edin');
+                return;
+            }
+            
+            if (!isValidPassword(password)) {
+                showAlert('registerError', 'Şifrə ən azı 6 simvol olmalıdır');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showAlert('registerError', 'Şifrələr uyğun gəlmir');
+                return;
+            }
+            
+            showLoading('registerBtn');
+            
+            // 1.5 saniyə gözlə (real tətbiqdə API çağırışı üçün)
+            setTimeout(() => {
+                const result = register(name, email, password);
+                
+                if (result.success) {
+                    // Uğurlu qeydiyyat
+                    currentUser = result.user;
+                    localStorage.setItem('artvision_current_user', JSON.stringify(result.user));
+                    showAlert('registerSuccess', 'Uğurla qeydiyyatdan keçdiniz!', 'success');
+                    hideAlert('registerError');
+                    
+                    // 2 saniyə sonra favoritlər səhifəsinə yönləndir
+                    setTimeout(() => {
+                        window.location.href = 'favorites.html';
+                    }, 2000);
+                } else {
+                    // Uğursuz qeydiyyat
+                    showAlert('registerError', result.message);
+                }
+                
+                hideLoading('registerBtn');
+            }, 1500);
+        });
+
+        // Əgər istifadəçi artıq giriş edibsə, birbaşa favoritlər səhifəsinə yönləndir
+        if (currentUser && window.location.pathname.includes('login.html')) {
+            window.location.href = 'favorites.html';
+        }
+
+        // Səhifə yüklənəndə
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('loginPage');
+        });
+    </script>
+</body>
+</html>
