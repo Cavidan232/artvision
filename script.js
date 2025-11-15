@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     size: "150×180 cm",
                     medium: "Yağlı boya, kətan",
                     description: "Bu portret həyatın ağırlığını daşıyan, lakin hələ də ümidi olan bir balıqçını təsvir edir. Hər bir xətt onun həyat hekayəsini danışır.",
-                    image: "https://images.unsplash.com/photo-1543857778-c4a1a5697173?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    image: "https://images.squarespace-cdn.com/content/v1/64e77c29df845c11ffd166d2/b7827adc-8fb5-4cd1-bafb-e0432aea8998/Stocksy_comp_4896564_V3.jpg?format=1000w",
                     tags: ["portret", "realizm", "yaşlı"]
                 }
             ]
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             bio: "Müasir miniatür sənətinin gənc və istedadlı nümayəndəsi. Ənənəvi və müasir üslubları harmoniya şəklində birləşdirir.",
             specialty: "Miniatür",
             category: "miniature",
-            image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            image: "https://images.squarespace-cdn.com/content/v1/64e77c29df845c11ffd166d2/41b88135-a9b5-4d4f-a7a9-d20892deecae/Stocksy_comp_1155665_V3.jpg?format=1000w",
             artworksCount: 32,
             followers: "2.1K",
             rating: 4.7,
